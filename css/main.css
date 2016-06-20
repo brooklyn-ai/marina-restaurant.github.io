@@ -86,7 +86,11 @@ img.local {
     left: 5%;
 }
 
-
+.open-mic {position: relative;
+    left: 16%;
+    -webkit-filter: drop-shadow(0 0 1px #3FF9F9);
+    top: 4px;
+}
 /*snow*/
 
 /*
