@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,7 +16,7 @@
     <meta property="og:image" content="http://vermontmarina.com/images/social_card_vermont_marina.png" />
     <meta property="og:url" content="http://www.vermontmarina.com" />
     <meta property="og:site_name" content="The Marina - Brattleboro, VT Waterfront Dining" />
-<!-- <link href='https://fonts.googleapis.com/css?family=Ribeye+Marrow' rel='stylesheet' type='text/css'> -->
+
     <link rel="stylesheet" href="https://pongstr.github.io/pongstagr.am/assets/css/docs.css">
 
 
@@ -43,7 +44,7 @@
         <link rel="stylesheet" href="css/pongstagr.am.min.css">
     <link rel="stylesheet" type="text/css" href="css/animate.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+<!--     <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script> -->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
@@ -171,7 +172,7 @@
               <div class="panel-heading">
                 <h4 class="panel-title">
                   <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                      Live Music & Events!
+                      Live Music &amp; Events!
                   </a>
                   </h4>
               </div>
@@ -413,7 +414,7 @@
                     Every Day <br>
                     Sunday Brunch: 10am to 1pm<br><br>
                     Hours: Sun: 10am-9pm  <br>  M-W: 11:30am-9pm <br>  Th-Sat: 11:30am-10pm  <br>   <br>         
-                    <em>Comments, Suggestions & Inquiries are most welcome.</em>
+                    <em>Comments, Suggestions &amp; Inquiries are most welcome.</em>
                       <script src="https://apis.google.com/js/platform.js" async defer></script>
                     <g:plusone></g:plusone>
                 </address>
@@ -571,7 +572,7 @@
               <a href="http://www.vermontcanoetouringcenter.com/" target="_blanlk">Vermont Canoe Touring Center</a>
             </h3>
             <h4 class="text-center">
-              <em class="dark-txt">Canoeing Kayaking & River Adventures for Individuals Couples, Families, Small and Large Groups</em>
+              <em class="dark-txt">Canoeing Kayaking &amp; River Adventures for Individuals Couples, Families, Small and Large Groups</em>
                 <br><br><br>
                 OPEN MAY THROUGH OCTOBER<br>
                 <br>
@@ -603,7 +604,7 @@
             <img data-original="images/shell-motel.jpg" class="lazy4 animated pulse art img-responsive pull-left" alt="example art" style="width: 45%; height: 45%;">
              <img data-original="images/art2.jpg" class="lazy4 animated pulse art art-1st img-responsive center-block"  alt="example art" style="width: 50%; height: 50%;">
             <h4>
-              <a href="http://www.tiffanyheerema.com/"target="_blank">Tiffany Heerema</a><br>
+              <a href="http://www.tiffanyheerema.com/" target="_blank">Tiffany Heerema</a><br>
               <a href="http://www.picardart.com" target="blank"> Janet Picard </a><br>
               <a href="http://www.deborahlazar.com" target="blank"> Deborah Lazar</a><br>
               <a href="http://www.carynking.com" target="blank">Caryn King</a><br>
@@ -873,55 +874,91 @@
         </div>
       </nav>
     </div>
-    
-    <!-- you tube overlay flying video --->   
-    <iframe width="560" height="315" id="skyVideo" style="    
+    <iframe width="560" height="315" id="video" style="    
     position: absolute;
     left: 1050px;
     width: 500px;
     height: 282.5px;
     top: 240px;
-    z-index: -4;" src="https://www.youtube.com/embed/W9WmBHkj2H8?list=PLrImkXjL1hSsfz4QrL2M-PmzvyjbPqxpy" frameborder="0" allowfullscreen></iframe>
+    z-index: -4;" src="https://www.youtube.com/embed/W9WmBHkj2H8?list=PLrImkXjL1hSsfz4QrL2M-PmzvyjbPqxpy?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+     
 
-    <!-- Scroll button -->
+    <span id="pauseButton"></span>
+
+    <span id="playButton"></span>
+
+
     <script>
+
+
+
+// Inject YouTube API script
+var tag = document.createElement('script');
+tag.src = "//www.youtube.com/player_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+var player;
+
+function onYouTubePlayerAPIReady() {
+  // create the global player from the specific iframe (#video)
+  player = new YT.Player('video', {
+    events: {
+      // call this function when player is ready to use
+      'onReady': onPlayerReady
+    }
+  });
+}
+
+function onPlayerReady(event) {
+  
+  // bind events
+  var playButton = document.getElementById("playButton");
+  playButton.addEventListener("click", function() {
+    player.playVideo();
+  });
+  
+  var pauseButton = document.getElementById("pauseButton");
+  pauseButton.addEventListener("click", function() {
+    player.pauseVideo();
+  });
+  
+}
+
+
+
+
+// Scroll button 
+
         $( document ).ready(function() {
       var bodyWidth = $( "body" ).width(), // whole width of the body
           wWidth = $( window ).width(),// width of the viewport
           arrowButton = $( "#arrow-button" ),
           pos = 0;// start position
-
       arrowButton.click(function() {
         if ( pos <= bodyWidth-wWidth ) {
           pos += wWidth+500;// after click add to start position width of the viewport
         } else {
           pos = 0; 
         }
-
         $('body').animate( { scrollLeft: pos }, 1500);
       });
-
        });//end ready
    $( document ).ready(function() {
       var bodyWidth = $( "body" ).width(), // whole width of the body
           wWidth = $( window ).width(),// width of the viewport
           arrowButton = $( "#arrow-button2" ),
           pos = 0;// start position
-
       arrowButton.click(function() {
         if ( pos <= bodyWidth-wWidth ) {
           pos += wWidth+500;// after click add to start position width of the viewport
         } else {
           pos = 0; 
         }
-
         $('body').animate( { scrollLeft: pos }, 1500);
       });
-
        });//end ready
-
-
-
    
     (function() {
       var body = $('body');
@@ -930,29 +967,21 @@
         return false;
     });
     })();
-
         $('.animate-me').on('click', function() {
             $('.box-a').addClass('animated tada');
-
         });
-
         $('.animate-youtube').on('click', function() {
             $('.box-b').addClass('animated bounce');
-
         });
  
         $('.animate-click').on('click', function() {
             $('.box-c').addClass('animated flip');
-
         });
  
         $('.animate-btn').on('click', function() {
             $('.box-d').addClass('animated wobble tada-btn');
-
         });
-
     function parallax(){
-
         var prlx_lyr_1 = document.getElementById('prlx_lyr_1');
         var prlx_lyr_2 = document.getElementById('prlx_lyr_2');
         var prlx_lyr_3 = document.getElementById('prlx_lyr_3');
@@ -968,85 +997,57 @@
         prlx_lyr_6.style.left = (window.pageXOffset/2)+'px';
         
         }
-
         window.addEventListener("scroll", parallax, false);
-
         var curYPos = 0,
     curXPos = 0,
     curDown = false;
-
 window.addEventListener('mousemove', function(e){ 
   if(curDown === true){
     window.scrollTo(document.body.scrollLeft + (curXPos - e.pageX), document.body.scrollTop + (curYPos - e.pageY));
   }
 });
-
-
-
 window.addEventListener('mousedown', function(e){ curDown = true; curYPos = e.pageY; curXPos = e.pageX; });
 window.addEventListener('mouseup', function(e){ curDown = false; });
-
-
-
-
 $.getScript('//cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js',
-
 function(){
-
 $('#lazyload1 .lazy').lazyload({
-
 });
   $('#lazyload2 .lazy').lazyload({
-
 });
     $('#lazyload3 .lazy3').lazyload({
-
 });
     $('#lazyload4 .lazy4').lazyload({
-
 });
    $('#lazyload5 .lazy5').lazyload({
-
 });
     $('#doScroll .lazy6').lazyload({
-
 });
-
 });
-
 $(function() {
     $("img.lazy").lazyload({
         event : "sporty"
     });
 });
-
 $(window).bind("load", function() {
     var timeout = setTimeout(function() {
         $("img.lazy").trigger("sporty")
     }, 5000);
 });
-
-
-
 $(function() {
     $("img.lazy3").lazyload({
         event : "sporty2"
     });
 });
-
 $(window).bind("load", function() {
     var timeout = setTimeout(function() {
         $("img.lazy3").trigger("sporty2")
     }, 8000);
 });
-
-
 $(function() {
     $("img.lazy4").lazyload({
         event : "sporty4"
     });
 });
-
 $(window).bind("load", function() {
     var timeout = setTimeout(function() {
         $("img.lazy4").trigger("sporty4")
@@ -1057,25 +1058,21 @@ $(function() {
         event : "sporty5"
     });
 });
-
 $(window).bind("load", function() {
     var timeout = setTimeout(function() {
         $("img.lazy5").trigger("sporty5")
     }, 11000);
 });
-
 $(function() {
     $("img.lazy6").lazyload({
         event : "sporty6"
     });
 });
-
 $(window).bind("load", function() {
     var timeout = setTimeout(function() {
         $("img.lazy6").trigger("sporty6")
     }, 4000);
 });
-
   </script>
 
   <script src="js/bootstrap.min.js"></script>
@@ -1110,15 +1107,11 @@ $(document).ready(function () {
 
 <!--  snow -->
  <script type="text/javascript">
-
-
-
 // var Snow = (function(){
 //   var w = $(window).width(),
 //       h = $(window).height(),
 //       startPos = {x:0,y:50},
 //       numFlakes = 12;
-
 //   //attach the snowflakes
 //   for (var i=0;i<numFlakes;i++){  
 //     var flake = $("<div />").attr("class", "snowflake "+"s"+(i%3));
@@ -1126,16 +1119,12 @@ $(document).ready(function () {
    // flake.css({transform:"translate3d("+startPos.y+"px,"+Math.random()*w+"px,0)",opacity:0});
 //     $("#prlx_lyr_1").append(flake);
 //   }
-
 //   function animate(){
 //     var snowflakes = $(".snowflake");
-
 //     for (var i=0;i<snowflakes.length;i++){
 //        var point0 = {left:Math.random()*w+20,top:startPos.y},
 //           point1 = {left:Math.random()*w-200,top:Math.random()*h-20},
 //           point2 = {left:Math.random()*w,top:h+100};
-
-
 //       TweenMax.to(snowflakes[i], 10, {
 //         delay:0.8*i,bezier:{
 //           curviness:1.5, values:[point0,point1,point2], autoRotate:true},
@@ -1148,11 +1137,8 @@ $(document).ready(function () {
 //     w = $(window).width();
 //     h = $(window).height();
 //   })
-
 //   animate();
-
 // })();
-
 </script>
 
 
