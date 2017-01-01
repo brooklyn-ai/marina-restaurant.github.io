@@ -874,7 +874,7 @@
         </div>
       </nav>
     </div>
-    <iframe width="560" height="315" id="video" style="    
+    <iframe id="video" width="560" height="315"  style="    
     position: absolute;
     left: 1050px;
     width: 500px;
@@ -900,8 +900,15 @@
 
     <script>
 
+// Inject YouTube API script
+var tag = document.createElement('script');
+tag.src = "//www.youtube.com/player_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 
+      
+      
 var player;
 
 // this function gets called when API is ready to use
@@ -930,11 +937,6 @@ function onPlayerReady(event) {
   
 }
 
-// Inject YouTube API script
-var tag = document.createElement('script');
-tag.src = "http//www.youtube.com/player_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // Scroll button 
 
