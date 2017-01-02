@@ -58,12 +58,6 @@
           window.location.replace("mobile.html");
       }
     </script>
-    <script type="text/javascript" src="//www.youtube.com/player_api"></script>
-
-
-
-
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -880,10 +874,41 @@
         </div>
       </nav>
     </div>
-	  
-	  
-	  <script>
-	var player;
+<!--     <iframe width="560" height="315" id="video" style="    
+    position: absolute;
+    left: 1050px;
+    width: 500px;
+    height: 282.5px;
+    top: 240px;
+    z-index: -4;" src="https://www.youtube.com/embed/W9WmBHkj2H8?list=PLrImkXjL1hSsfz4QrL2M-PmzvyjbPqxpy?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+     
+
+    <span id="pause-button" style="    position: absolute;
+    z-index: 10;
+    width: 100px;
+    height: 100px;
+    left: 1100px;
+    background-color: red;"></span>
+
+    <span id="play-button" style="    position: absolute;
+    z-index: 10;
+    width: 100px;
+    height: 100px;
+    left: 1000px;
+    background-color: red;"></span>
+ -->
+
+
+
+
+
+
+<script src="http://www.youtube.com/player_api"></script>
+
+
+
+<script>
+  var player;
 
 // this function gets called when API is ready to use
 function onYouTubePlayerAPIReady() {
@@ -913,31 +938,54 @@ function onPlayerReady(event) {
 
 </script>
 
-	  
-	  
-	  
-    <iframe id="video" width="560" height="315"  style="    
-    position: absolute;
+
+
+
+<iframe id="video" src="http://www.youtube.com/embed/W9WmBHkj2H8?enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
+
+<!-- 
+SVG ==
+http://thenounproject.com/term/play/23255/ 
+http://css-tricks.com/svg-tabs-using-svg-shape-template/
+-->
+<svg class="defs">
+  <defs>
+    <path id="pause-button-shape"  d="M24,0C10.745,0,0,10.745,0,24s10.745,24,24,24s24-10.745,24-24S37.255,0,24,0z M21,33.064c0,2.201-1.688,4-3.75,4
+    s-3.75-1.799-3.75-4V14.934c0-2.199,1.688-4,3.75-4s3.75,1.801,3.75,4V33.064z M34.5,33.064c0,2.201-1.688,4-3.75,4
+    s-3.75-1.799-3.75-4V14.934c0-2.199,1.688-4,3.75-4s3.75,1.801,3.75,4V33.064z"/>
+    <path id="play-button-shape"  d="M24,0C10.745,0,0,10.745,0,24s10.745,24,24,24s24-10.745,24-24S37.255,0,24,0z M31.672,26.828l-9.344,9.344
+    C20.771,37.729,19.5,37.2,19.5,35V13c0-2.2,1.271-2.729,2.828-1.172l9.344,9.344C33.229,22.729,33.229,25.271,31.672,26.828z"/>
+  </defs>
+</svg>
+
+<div class="buttons">
+  <!-- if we needed to change height/width we could use viewBox here -->
+  <svg class="button" id="play-button">
+    <use xlink:href="#play-button-shape">
+  </svg>
+  <svg class="button" id="pause-button">
+    <use xlink:href="#pause-button-shape">
+  </svg>
+</div>
+
+
+<style>
+  #video{
+        position: absolute;
     left: 1050px;
     width: 500px;
     height: 282.5px;
     top: 240px;
-    z-index: -4;" src="//www.youtube.com/embed/W9WmBHkj2H8?enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
-     
+    z-index: -4;
+  }
 
-    <span id="pause-button" style="    position: absolute;
+  .buttons {
+        position: absolute;
+    left: 1557px;
     z-index: 10;
-    width: 100px;
-    height: 100px;
-    left: 1100px;
-    background-color: red;"></span>
-
-    <span id="play-button" style="    position: absolute;
-    z-index: 10;
-    width: 100px;
-    height: 100px;
-    left: 1000px;
-    background-color: red;"></span>
+    top: 300px;
+  }
+</style>
 
 
     <script>
