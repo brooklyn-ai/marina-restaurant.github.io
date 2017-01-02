@@ -883,7 +883,7 @@
     z-index: -4;" src="https://www.youtube.com/embed/W9WmBHkj2H8?list=PLrImkXjL1hSsfz4QrL2M-PmzvyjbPqxpy_ok?enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
      
 
-    <span id="pause-button" style="    position: absolute;
+<!--     <span id="pause-button" style="    position: absolute;
     z-index: 10;
     width: 100px;
     height: 100px;
@@ -896,46 +896,46 @@
     height: 100px;
     left: 1000px;
     background-color: red;"></span>
-
+ -->
 
     <script>
 
 // Inject YouTube API script
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/player_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+// var tag = document.createElement('script');
+// tag.src = "https://www.youtube.com/player_api";
+// var firstScriptTag = document.getElementsByTagName('script')[0];
+// firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 
       
       
-var player;
+// var player;
 
 // this function gets called when API is ready to use
-function onYouTubePlayerAPIReady() {
+// function onYouTubePlayerAPIReady() {
   // create the global player from the specific iframe (#video)
-  player = new YT.Player('video', {
-    events: {
+//   player = new YT.Player('video', {
+//     events: {
       // call this function when player is ready to use
-      'onReady': onPlayerReady
-    }
-  });
-}
+//       'onReady': onPlayerReady
+//     }
+//   });
+// }
 
-function onPlayerReady(event) {
+// function onPlayerReady(event) {
   
   // bind events
-  var playButton = document.getElementById("play-button");
-  playButton.addEventListener("click", function() {
-    player.playVideo();
-  });
+//   var playButton = document.getElementById("play-button");
+//   playButton.addEventListener("click", function() {
+//     player.playVideo();
+//   });
   
-  var pauseButton = document.getElementById("pause-button");
-  pauseButton.addEventListener("click", function() {
-    player.pauseVideo();
-  });
+//   var pauseButton = document.getElementById("pause-button");
+//   pauseButton.addEventListener("click", function() {
+//     player.pauseVideo();
+//   });
   
-}
+// }
 
 
 // Scroll button 
